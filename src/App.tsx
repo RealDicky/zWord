@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { getWords, addWords, deleteWords } from './api'
+import { getWords } from './api'
+import WordCard from './components/WordCard'
+import { Word } from './types'
+import AddWord from './components/AddWord'
 
 function App () {
   const [words, setWords] = useState([])
@@ -8,24 +11,19 @@ function App () {
     const words = await getWords()
     setWords(words)
   }
-  const addWordsAsync = async () => {
-    await addWords([{
-      word: 'hello',
-      translation: '你好'
-    }])
-  }
-
-  const deleteWordsAsync = async () => {
-    await deleteWords(1)
-  }
   useEffect(() => {
     getWordsAsync()
   }, [])
   return (
     <>
-      zword
-      <button onClick={() => addWordsAsync()}>add</button>
-      <button onClick={() => deleteWordsAsync()}>delete</button>
+      {words.map((word: Word) => (
+        <div key={word.id} className='mx-2 my-2'>
+          <WordCard word={word} refresh={getWordsAsync} />
+        </div>
+      ))}
+      <div className='fixed bottom-10 right-10'>
+        <AddWord refresh={getWordsAsync} />
+      </div>
     </>
   )
 }
