@@ -53,8 +53,8 @@ const WordCard = ({ word, refresh }: { word: Word, refresh?: () => void }) => {
               <span className="text-lg">{word.word}</span>
               <p className="text-sm invisible group-has-[:checked]/translation:visible">{word.translation}</p>
             </div>
-            <label htmlFor="showTranslation" className='ml-auto' onClick={() => setX(0)}>
-              <input id="showTranslation" type="checkbox" className='hidden peer' />
+            <label className='ml-auto' onClick={() => setX(0)}>
+              <input type="checkbox" className='hidden peer' />
               <Icon icon="bi:eye" className="text-2xl block peer-[:checked]:hidden" />
               <Icon icon="bi:eye-slash" className="text-2xl hidden peer-[:checked]:block" />
             </label>
