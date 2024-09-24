@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { getWords } from './api'
+import AddWord from './components/AddWord'
 import WordCard from './components/WordCard'
 import { Word } from './types'
-import AddWord from './components/AddWord'
 
 function App () {
   const [words, setWords] = useState([])
